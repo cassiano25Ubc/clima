@@ -1,0 +1,264 @@
+:root {
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: #1e293b;
+  background: #252a34;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --surface: #fff;
+  --surface-muted: #f1f5f9;
+  --text-muted: #64748b;
+  --accent: #2563eb;
+  --focus: #f59e0b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 0.65rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+input {
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.65rem;
+  color: inherit;
+  background: #fff;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#app {
+  width: min(100% - 2rem, 800px);
+  margin: 0 auto;
+  padding: 2.5rem 0 3rem;
+}
+
+.search-header {
+  margin: 0 auto 1.5rem;
+  text-align: center;
+}
+
+.search-header h1 {
+  margin: 0 0 1.25rem;
+  color: #fff;
+  font-size: clamp(2rem, 7vw, 3rem);
+  line-height: 1.1;
+}
+
+#city-search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#city-search label {
+  grid-column: 1 / -1;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+#weather-main {
+  min-height: 180px;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background: var(--surface);
+  box-shadow: 0 18px 45px rgb(0 0 0 / 20%);
+}
+
+#app-status {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+#app-status:empty {
+  display: none;
+}
+
+#retry-search {
+  margin-bottom: 1rem;
+}
+
+#weather-result {
+  min-width: 0;
+}
+
+.weather-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--surface);
+}
+
+.weather-summary {
+  min-width: 0;
+  padding: 1.75rem;
+  background: #eff6ff;
+}
+
+.weather-temperature {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.8rem;
+  color: #0f172a;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
+.weather-temperature .weather-icon {
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  color: #2563eb;
+}
+
+.weather-summary h2 {
+  margin: 0 0 0.65rem;
+  color: #0f172a;
+  font-size: 1.3rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.weather-date,
+.weather-day-period,
+.weather-condition {
+  margin: 0.55rem 0 0;
+  line-height: 1.45;
+}
+
+.weather-date {
+  color: var(--text-muted);
+}
+
+.weather-condition {
+  color: #1d4ed8;
+  font-weight: 650;
+}
+
+.weather-details {
+  min-width: 0;
+  padding: 1.5rem;
+}
+
+.weather-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.weather-metric {
+  min-width: 0;
+  padding: 1rem;
+  border-radius: 0.85rem;
+  background: var(--surface-muted);
+}
+
+.weather-metric dt {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.weather-metric .weather-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
+  color: #2563eb;
+}
+
+.weather-metric dd {
+  margin: 0.45rem 0 0;
+  color: #0f172a;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  #app {
+    width: min(100% - 1.25rem, 800px);
+    padding-top: 1.75rem;
+  }
+
+  #weather-main {
+    padding: 1rem;
+    border-radius: 1.2rem;
+  }
+
+  .weather-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .weather-summary,
+  .weather-details {
+    padding: 1.25rem;
+  }
+
+  .weather-metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  button {
+    transition: background-color 120ms ease;
+  }
+}
