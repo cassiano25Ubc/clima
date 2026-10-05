@@ -1,67 +1,268 @@
-# Clima
+# 🌤️ Clima
 
-Aplicação web responsiva para pesquisar cidades e consultar suas condições meteorológicas atuais. A busca usa a API Open-Meteo para localizar a cidade e obter os dados do clima.
+> **Aplicação web responsiva para consultar o clima atual de cidades do mundo todo.**
 
-## Funcionalidades
+O **Clima** permite pesquisar cidades, selecionar a localidade desejada e visualizar as condições meteorológicas atuais de forma simples, rápida e responsiva.
 
-- Busca de cidades em diferentes países.
-- Seleção da localidade quando o nome corresponde a mais de uma cidade.
-- Exibição de temperatura atual, condição do tempo, data e período local (dia/noite).
-- Indicadores de umidade relativa, sensação térmica, probabilidade de precipitação e vento.
-- Estados de carregamento, busca sem resultados e erro com opção de tentar novamente.
-- Interface em português, responsiva e utilizável por teclado.
+A aplicação utiliza a **Open-Meteo** para realizar a geolocalização das cidades e consultar os dados meteorológicos.
 
-## Tecnologias
+---
 
-- HTML, CSS e TypeScript
-- Vite
-- Open-Meteo Geocoding API e Forecast API
-- Node.js Test Runner para os testes automatizados
+## ✨ Funcionalidades
 
-## Requisitos
+* 🌎 **Busca de cidades** em diferentes países
+* 📍 **Seleção de localidade** quando existem cidades com o mesmo nome
+* 🌡️ **Temperatura atual**
+* ☁️ **Condição meteorológica**
+* 📅 **Data e horário local**
+* 🌙 **Identificação de dia/noite**
+* 💧 **Umidade relativa**
+* 🌡️ **Sensação térmica**
+* 🌧️ **Probabilidade de precipitação**
+* 💨 **Velocidade do vento**
+* ⏳ **Estado de carregamento**
+* 🔍 **Tratamento para buscas sem resultados**
+* ⚠️ **Tratamento de erros com opção de tentar novamente**
+* ⌨️ **Navegação por teclado**
+* 📱 **Interface responsiva**
+* 🇧🇷 **Interface em português**
 
-- Node.js 24 ou superior
-- npm
+---
 
-## Executar localmente
+## 🛠️ Tecnologias
+
+| Tecnologia              | Utilização                            |
+| ----------------------- | ------------------------------------- |
+| **HTML**                | Estrutura da aplicação                |
+| **CSS**                 | Estilização e responsividade          |
+| **TypeScript**          | Lógica e tipagem                      |
+| **Vite**                | Desenvolvimento e build               |
+| **Open-Meteo**          | Geocodificação e dados meteorológicos |
+| **Node.js Test Runner** | Testes automatizados                  |
+
+---
+
+## 🌐 APIs utilizadas
+
+### 📍 Open-Meteo Geocoding API
+
+Responsável por localizar a cidade pesquisada e retornar informações como:
+
+* Nome da cidade
+* País
+* Estado/região
+* Latitude
+* Longitude
+* Timezone
+
+### 🌦️ Open-Meteo Forecast API
+
+Utilizada para obter os dados meteorológicos da localidade selecionada.
+
+Entre os dados utilizados estão:
+
+* Temperatura
+* Sensação térmica
+* Umidade
+* Probabilidade de precipitação
+* Velocidade do vento
+* Condição do tempo
+* Período do dia
+
+---
+
+## 🔎 Como funciona
+
+O fluxo da aplicação acontece em quatro etapas:
+
+```text
+🔎 Pesquisa da cidade
+        ↓
+📍 Seleção da localidade
+        ↓
+🌦️ Consulta dos dados meteorológicos
+        ↓
+📊 Exibição das condições atuais
+```
+
+### 1. Pesquisa
+
+A aplicação envia o nome informado pelo usuário para a **API de geocodificação da Open-Meteo**.
+
+### 2. Seleção
+
+Quando existem várias localidades com o mesmo nome, a aplicação apresenta as opções disponíveis para que o usuário escolha a correta.
+
+### 3. Consulta meteorológica
+
+Após a seleção, são utilizados:
+
+* Latitude
+* Longitude
+* Timezone
+
+Essas informações são enviadas para a **Forecast API** da Open-Meteo.
+
+### 4. Exibição
+
+Os dados retornados pela API são apresentados na interface com as informações meteorológicas atuais.
+
+> 💡 A probabilidade de precipitação exibida corresponde à **hora local atual da cidade selecionada**.
+
+---
+
+## ⚙️ Arquitetura
+
+As chamadas às APIs são organizadas em **módulos de serviço no cliente**, mantendo a lógica de comunicação externa separada da interface.
+
+O projeto:
+
+* não possui backend próprio;
+* não possui banco de dados;
+* não persiste pesquisas;
+* depende de conexão com a internet;
+* depende da disponibilidade das APIs da Open-Meteo.
+
+---
+
+## 📋 Requisitos
+
+Antes de executar o projeto, certifique-se de possuir:
+
+* **Node.js 24 ou superior**
+* **npm**
+* Conexão com a internet
+
+---
+
+## 🚀 Executando o projeto
+
+### 1. Clone o repositório
 
 ```bash
 git clone https://github.com/cassiano25Ubc/clima.git
+```
+
+### 2. Entre na pasta
+
+```bash
 cd clima
+```
+
+### 3. Instale as dependências
+
+```bash
 npm install
+```
+
+### 4. Inicie o servidor de desenvolvimento
+
+```bash
 npm run dev
 ```
 
-Abra no navegador o endereço local informado pelo Vite, normalmente `http://localhost:5173`.
+Depois, abra no navegador o endereço informado pelo Vite.
 
-## Testes e build
+Normalmente:
 
-Executar os testes:
+```text
+http://localhost:5173
+```
+
+---
+
+## 🧪 Testes
+
+Para executar os testes automatizados:
 
 ```bash
 npm test
 ```
 
-Gerar o build de produção e verificar os tipos TypeScript:
+---
+
+## 📦 Build
+
+Para gerar o build de produção e verificar os tipos TypeScript:
 
 ```bash
 npm run build
 ```
 
-Para servir localmente o build:
+Para visualizar o build localmente:
 
 ```bash
 npm run preview
 ```
 
-## Como funciona a busca
+---
 
-1. A aplicação pesquisa a cidade usando a API de geocodificação da Open-Meteo.
-2. Se houver várias localidades correspondentes, a pessoa usuária escolhe uma opção.
-3. Com latitude, longitude e timezone da localidade escolhida, a aplicação consulta a API de previsão.
-4. Os dados meteorológicos são exibidos com as unidades retornadas pela API. A probabilidade de precipitação corresponde à hora local atual.
+## 📁 Estrutura geral
 
-As chamadas às APIs ficam encapsuladas em módulos de serviço no cliente; o projeto não possui backend próprio nem persiste pesquisas. O funcionamento requer conexão à internet e disponibilidade da Open-Meteo.
+```text
+clima/
+│
+├── src/
+│   ├── services/
+│   │   └── ...
+│   │
+│   ├── ...
+│   └── ...
+│
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
+```
+
+> A estrutura acima representa a organização geral do projeto. Os arquivos podem variar conforme a implementação atual.
+
+---
+
+## 🎯 Objetivo do projeto
+
+O projeto foi desenvolvido para praticar conceitos importantes do desenvolvimento web moderno, principalmente:
+
+* TypeScript
+* Consumo de APIs
+* Programação assíncrona
+* Manipulação do DOM
+* Tipagem de dados
+* Tratamento de erros
+* Estados de carregamento
+* Responsividade
+* Organização de código
+* Testes automatizados
+* Build com Vite
+
+---
+
+## 📌 Status
+
+🟢 **Projeto funcional**
+
+O projeto possui busca de cidades, consulta meteorológica, tratamento de estados da interface, testes automatizados e build de produção.
+
+---
+
+## 👨‍💻 Desenvolvido por
+
+**Cassiano Maia**
+
+Estudante de Ciência da Computação e desenvolvedor em formação.
+
+[![GitHub](https://img.shields.io/badge/GitHub-Cassiano25Ubc-181717?style=for-the-badge\&logo=github)](https://github.com/cassiano25Ubc)
+
+---
+
+<div align="center">
+
+### 🌤️ Clima
+
+**Informação meteorológica de forma simples e rápida.**
+
+</div>
+
 
 ## Documentação do projeto
 
