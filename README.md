@@ -7,6 +7,9 @@ O **Clima** permite pesquisar cidades, selecionar a localidade desejada e visual
 A aplicação utiliza a **Open-Meteo** para realizar a geolocalização das cidades e consultar os dados meteorológicos.
 
 ---
+# link do projeto
+https://clima-omega-sepia.vercel.app/
+---
 
 ## ✨ Funcionalidades
 
@@ -132,68 +135,6 @@ Antes de executar o projeto, certifique-se de possuir:
 * **Node.js 24 ou superior**
 * **npm**
 * Conexão com a internet
-
----
-
-## 🚀 Executando o projeto
-
-### 1. Clone o repositório
-
-```bash
-git clone https://github.com/cassiano25Ubc/clima.git
-```
-
-### 2. Entre na pasta
-
-```bash
-cd clima
-```
-
-### 3. Instale as dependências
-
-```bash
-npm install
-```
-
-### 4. Inicie o servidor de desenvolvimento
-
-```bash
-npm run dev
-```
-
-Depois, abra no navegador o endereço informado pelo Vite.
-
-Normalmente:
-
-```text
-http://localhost:5173
-```
-
----
-
-## 🧪 Testes
-
-Para executar os testes automatizados:
-
-```bash
-npm test
-```
-
----
-
-## 📦 Build
-
-Para gerar o build de produção e verificar os tipos TypeScript:
-
-```bash
-npm run build
-```
-
-Para visualizar o build localmente:
-
-```bash
-npm run preview
-```
 
 ---
 
